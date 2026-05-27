@@ -1,10 +1,179 @@
-<div class="panel mt-4">
+<!DOCTYPE html>
 
-    <h4>Threat Activity Overview</h4>
+<html lang="en">
 
-    <div class="chart-container">
+<head>
 
-        <canvas id="threatChart"></canvas>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CyberTunnel SOC Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="d-flex">
+
+    <div class="sidebar p-3">
+
+        <h2 class="logo">CyberTunnel</h2>
+
+        <a href="/">Dashboard</a>
+        <a href="/blocked">Blocked IPs</a>
+        <a href="/geo">Geo Monitoring</a>
+        <a href="/threat">Threat Intelligence</a>
+        <a href="/logs">Security Logs</a>
+        <a href="/logout">Logout</a>
+
+    </div>
+
+    <div class="main-content container-fluid">
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>Security Operations Center</h1>
+
+                <p class="subtext">
+                    Real-Time Cybersecurity Monitoring
+                </p>
+
+            </div>
+
+            <div class="status-pill">
+                SYSTEM ACTIVE
+            </div>
+
+        </div>
+
+        <div class="row g-4 mt-2">
+
+            <div class="col-md-3">
+
+                <div class="metric-card">
+
+                    <h5>Blocked Threats</h5>
+
+                    <div class="metric-number">
+                        {{ blocked_count }}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="metric-card">
+
+                    <h5>Firewall</h5>
+
+                    <div class="metric-status green">
+                        ENABLED
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="metric-card">
+
+                    <h5>VPN Tunnel</h5>
+
+                    <div class="metric-status green">
+                        SECURE
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="metric-card">
+
+                    <h5>Threat Level</h5>
+
+                    <div class="metric-status yellow">
+                        MODERATE
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel mt-4">
+
+            <h4>Threat Activity Overview</h4>
+
+            <div class="chart-container">
+
+                <canvas id="threatChart"></canvas>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+
+            <div class="col-lg-8">
+
+                <div class="panel">
+
+                    <h4>Recent Security Logs</h4>
+
+                    <pre>{{ logs }}</pre>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="panel">
+
+                    <h4>System Information</h4>
+
+                    <table class="table table-dark table-borderless">
+
+                        <tr>
+                            <td>Firewall</td>
+                            <td>Active</td>
+                        </tr>
+
+                        <tr>
+                            <td>VPN</td>
+                            <td>Running</td>
+                        </tr>
+
+                        <tr>
+                            <td>Monitoring</td>
+                            <td>Enabled</td>
+                        </tr>
+
+                        <tr>
+                            <td>Threat Detection</td>
+                            <td>Online</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -110,3 +279,7 @@ new Chart(ctx, {
 });
 
 </script>
+
+</body>
+
+</html>
