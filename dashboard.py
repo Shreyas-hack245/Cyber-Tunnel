@@ -25,6 +25,7 @@ def login():
             return redirect("/")
 
         else:
+
             error = "Invalid Credentials"
 
     return render_template(
@@ -64,6 +65,19 @@ def dashboard():
         logs=logs,
         blocked_count=blocked_count
     )
+
+@app.route("/logs-data")
+def logs_data():
+
+    try:
+
+        with open("logs/blocked_ips.log", "r") as file:
+
+            return file.read()
+
+    except:
+
+        return "No logs available."
 
 @app.route("/blocked")
 def blocked():
@@ -141,6 +155,7 @@ def logs():
     try:
 
         with open("logs/blocked_ips.log", "r") as file:
+
             log_data = file.read()
 
     except:
