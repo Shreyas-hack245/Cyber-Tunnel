@@ -133,7 +133,7 @@
 
                     <h4>Recent Security Logs</h4>
 
-                    <pre>{{ logs }}</pre>
+                    <pre id="logs-box">{{ logs }}</pre>
 
                 </div>
 
@@ -228,6 +228,7 @@ new Chart(ctx, {
                 labels: {
 
                     color: 'white',
+
                     font: {
                         size: 14
                     }
@@ -277,6 +278,20 @@ new Chart(ctx, {
     }
 
 });
+
+setInterval(() => {
+
+    fetch('/logs-data')
+
+    .then(response => response.text())
+
+    .then(data => {
+
+        document.getElementById('logs-box').innerText = data;
+
+    });
+
+}, 3000);
 
 </script>
 
